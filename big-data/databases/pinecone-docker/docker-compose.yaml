@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  pinecone:
+    image: ghcr.io/pinecone-io/pinecone-local:latest
+    container_name: pinecone
+    ports:
+      - "8080:8080"
+    volumes:
+      - pinecone-data:/data
+      - pinecone-config:/config
+    environment:
+      - PINECONE_ENV=local  # Ensures consistency with LangChain code
+
+volumes:
+  pinecone-data:
+    driver: local
+  pinecone-config:
+    driver: local
+
+
+
